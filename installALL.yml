@@ -1,0 +1,10 @@
+---
+- name: Installer Java / apache / tomcat
+  hosts: 127.0.0.1
+  become: true
+
+  roles:
+    - java
+    - apache
+    - tomcat
+...
