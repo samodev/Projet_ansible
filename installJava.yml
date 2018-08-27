@@ -1,0 +1,9 @@
+---
+- name: Installation de Java
+  hosts: 127.0.0.1
+  remote_user: root
+  become: true
+
+  roles:
+    - java
+...
