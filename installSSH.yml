@@ -1,0 +1,9 @@
+---
+- name: Installation clé SSH
+  hosts: 127.0.0.1
+  remote_user: root
+  become: true
+
+  roles:
+    - sshkey
+...

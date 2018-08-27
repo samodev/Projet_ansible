@@ -1,0 +1,32 @@
+---
+# tasks file for sshkey
+
+
+- name: Generating RSA key for root
+  user: name=jenkins generate_ssh_key=yes
+
+
+
+- name: Downloading pub key
+  fetch: src=/home/jenkins/.ssh/id_rsa.pub dest=/tmp/id_rsa.tmp flat=yes
+
+
+
+- name: Copying local key to other.server.net
+  local_action: shell cat /tmp/id_rsa.tmp | ssh stage@192.168.100.82 "cat >> /apps/jenkins/.ssh/authorized_keys"
+
+
+
+- name: Deleting temporal files
+  local_action: file  path=/tmp/id_rsa.tmp state=absent
+
+
+
+- name: Coping local key to other.server.net
+  local_action: shell cat /tmp/id_rsa.tmp | ssh stage@192.168.100.82 "cat >> /apps/jenkins/.ssh/authorized_keys"
+
+
+
+- name: Removing temporal keys from other.server.net
+  shell: ssh stage@192.168.100.82  'sed -i "/ansible-generated/d" /apps/jenkins/.ssh/authorized_keys'
+...
