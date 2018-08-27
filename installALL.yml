@@ -1,6 +1,6 @@
 ---
 - name: Installer Java / apache / tomcat
-  hosts: 192.168.100.82
+  hosts: 127.0.0.1
 
   roles:
     - java
