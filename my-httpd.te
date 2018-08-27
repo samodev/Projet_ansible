@@ -1,0 +1,20 @@
+
+module my-httpd 1.0;
+
+require {
+	type httpd_t;
+	type httpd_sys_content_t;
+	type unreserved_port_t;
+	class tcp_socket name_bind;
+	class dir write;
+}
+
+#============= httpd_t ==============
+
+#!!!! The file '/var/www/html/example.com/logs' is mislabeled on your system.  
+#!!!! Fix with $ restorecon -R -v /var/www/html/example.com/logs
+#!!!! This avc can be allowed using the boolean 'httpd_unified'
+allow httpd_t httpd_sys_content_t:dir write;
+
+#!!!! This avc can be allowed using the boolean 'nis_enabled'
+allow httpd_t unreserved_port_t:tcp_socket name_bind;
