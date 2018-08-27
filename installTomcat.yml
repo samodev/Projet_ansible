@@ -1,0 +1,9 @@
+---
+
+- name: Installation de Tomcat
+  hosts: localhost
+  remote_user: tomcat
+ 
+  roles:
+    - tomcat
+...
