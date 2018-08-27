@@ -11,5 +11,5 @@
   unarchive:
     src: /tmp/jdk-8u181-linux-x64.tar.gz
     dest: /opt
-    become: true
+    user: root
 ...
